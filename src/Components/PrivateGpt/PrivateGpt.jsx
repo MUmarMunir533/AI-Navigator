@@ -110,7 +110,7 @@ const PrivateGpt = ({ isSidebarOpen }) => {
               key={index}
               className={`rounded-xl border shadow-sm p-4 flex flex-col justify-end hover:shadow-md transition-all
                 ${theme === "dark" ? "border-gray-700" : "border-gray-200"}
-                w-full xs:w-[80%] sm:w-[48%] md:w-[30%] lg:w-[23%]
+                w-full sm:w-[48%] md:w-[30%] lg:w-[23%]
               `}
               style={{
                 height: "160px",

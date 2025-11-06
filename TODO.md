@@ -1,8 +1,9 @@
-# TODO: Update Navbar for Functional Navigation
+# TODO: Make Code Fully Responsive
 
-## Tasks
+## Steps to Complete
 
-- [ ] Update App.jsx to add nested routes for all navbar items (Private GPT, VOC, VOB, VOM, Buyer Intelligence, User Management, Prompt Library)
-- [ ] Update Dashboard.jsx to use <Outlet /> for rendering nested components instead of hardcoded PrivateGpt
-- [ ] Update Navbar.jsx to add navigation logic using useNavigate for both small screen dropdown and large screen list items
-- [ ] Test navigation on both large and small screens to ensure pages open correctly
+- [ ] Update Voc.jsx: Ensure table is fully responsive with proper padding and button stacking on small screens.
+- [ ] Update PrivateGpt.jsx: Change non-standard 'xs:' breakpoint to 'sm:' for standard Tailwind.
+- [ ] Check and update other components (Vob, Vom, BuyerIntelligence, UserManagement, PromptLibrary, ForgetPassword, NewPassword, Buttons/ThemeToggleButton) for any responsiveness issues.
+- [ ] Test the app on different screen sizes (mobile, tablet, desktop) after updates.
+- [ ] Run the app locally to verify responsiveness.
