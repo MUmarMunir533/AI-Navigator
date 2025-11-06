@@ -16,7 +16,7 @@ const Dashboard = () => {
         theme === "dark" ? "bg-[#1e2939]" : "bg-[#eff1f2]"
       }`}
     >
-      {/* ===== Sidebar (Always on top when open) ===== */}
+      {/* ===== Sidebar ===== */}
       <div
         className={`fixed inset-y-0 left-0 z-50 transform transition-transform duration-300 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
@@ -31,9 +31,9 @@ const Dashboard = () => {
 
       {/* ===== Main Content ===== */}
       <div
-        className={`flex flex-col flex-1 transition-all duration-500 ease-in-out ${
-          isSidebarOpen ? "lg:ml-40" : "lg:ml-8"
-        }`}
+        className={`flex flex-col flex-1 transition-all duration-500 ease-in-out 
+          ${isSidebarOpen ? "lg:ml-48" : "lg:ml-10"} 
+        `}
       >
         {/* Navbar */}
         <div className="sticky top-0 z-30 w-full">
@@ -46,7 +46,7 @@ const Dashboard = () => {
         </main>
       </div>
 
-      {/* ===== Mobile Overlay Click Close ===== */}
+      {/* Mobile Overlay Click Close */}
       {isSidebarOpen && (
         <div
           className="fixed inset-0 z-40 lg:hidden"

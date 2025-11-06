@@ -35,7 +35,7 @@ const PrivateGpt = ({ isSidebarOpen }) => {
 
   return (
     <div
-      className={`min-h-screen w-full flex justify-center items-center px-3 sm:px-4 py-8 overflow-y-auto transition-all duration-300 
+      className={`min-h-screen w-full rounded-2xl flex justify-center items-center px-3 sm:px-4 py-8 overflow-y-auto transition-all duration-300 
         ${theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-50 text-black"}
       `}
     >
