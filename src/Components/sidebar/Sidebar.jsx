@@ -4,7 +4,6 @@ import { useTheme } from "../../contexts/ThemeContext";
 import { BsLayoutSidebar } from "react-icons/bs";
 import { RiSearch2Line } from "react-icons/ri";
 import { TbMessageFilled } from "react-icons/tb";
-import { FiSettings } from "react-icons/fi";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const { theme } = useTheme();
@@ -28,7 +27,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
       <div
         className={`fixed top-0 left-0 h-full flex flex-col justify-between transition-all duration-500 z-40
-        ${isOpen ? "w-40 sm:w-44 lg:w-48" : "w-8 sm:w-9 lg:w-10"}
+        ${isOpen ? "w-32 sm:w-36 lg:w-40" : "w-8 sm:w-9 lg:w-10"}
         ${
           theme === "dark"
             ? "bg-gray-800 text-white"

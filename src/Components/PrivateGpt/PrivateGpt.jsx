@@ -15,7 +15,7 @@ const PrivateGpt = ({ isSidebarOpen }) => {
     },
     {
       title: "Optimize Prompt",
-      description: "Enhance your prompts for better AI responses",
+      description: "Enhance your prompts AI responses",
       color: "#36cc86ff",
       darkColor: "#07e493e8",
     },
@@ -127,7 +127,7 @@ const PrivateGpt = ({ isSidebarOpen }) => {
                 {section.title}
               </h3>
               <p
-                className={`text-xs sm:text-sm font-light mt-1 ${
+                className={`text-[13px] sm:text-[13px] font-light mt-1 ${
                   theme === "dark" ? "text-gray-400" : "text-gray-700"
                 }`}
               >
@@ -160,7 +160,7 @@ const PrivateGpt = ({ isSidebarOpen }) => {
 
             {/* Left Buttons */}
             <div className="absolute left-3 flex items-center gap-2">
-              <button className="flex items-center gap-1 text-xs text-gray-500 border rounded-full border-gray-300 p-1.5">
+              <button className="flex items-center gap-1 bg-transparent border border-gray-600 text-gray-500 rounded-full p-1.5">
                 <FaPaperclip />
               </button>
             </div>

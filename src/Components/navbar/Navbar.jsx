@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import { LuMoon, LuSun } from "react-icons/lu";
 import { useTheme } from "../../contexts/ThemeContext";
@@ -8,9 +9,24 @@ const Navbar = ({ isSidebarOpen, toggleSidebar }) => {
   const { theme, toggleTheme } = useTheme();
   const [showTooltip, setShowTooltip] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
-  const [selectedItem, setSelectedItem] = useState("Private GPT");
   const tooltipRef = useRef();
   const menuRef = useRef();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const navItems = [
+    { name: "Private GPT", path: "/" },
+    { name: "VOC", path: "/voc" },
+    { name: "VOB", path: "/vob" },
+    { name: "VOM", path: "/vom" },
+    { name: "Buyer Intelligence", path: "/buyer-intelligence" },
+    { name: "User Management", path: "/user-management" },
+    { name: "Prompt Library", path: "/prompt-library" },
+  ];
+
+  const selectedItem =
+    navItems.find((item) => item.path === location.pathname)?.name ||
+    "Private GPT";
 
   // Click outside to close dropdowns
   useEffect(() => {
@@ -31,7 +47,7 @@ const Navbar = ({ isSidebarOpen, toggleSidebar }) => {
 
   return (
     <nav
-      className={`w-full py-1 px-2 sm:px-3 md:px-5 flex items-center justify-between transition-all duration-300
+      className={`w-full py-1 px-2 sm:px-3 md:px-2 flex items-center justify-between transition-all duration-300
       ${
         theme === "dark" ? "bg-gray-800 text-white" : "bg-[#eff1f2] text-black"
       }`}
@@ -82,30 +98,22 @@ const Navbar = ({ isSidebarOpen, toggleSidebar }) => {
                 }`}
               >
                 <ul className="flex flex-col gap-1 text-[12px]">
-                  {[
-                    "Private GPT",
-                    "VOC",
-                    "VOB",
-                    "VOM",
-                    "Buyer Intelligence",
-                    "User Management",
-                    "Prompt Library",
-                  ].map((item) => (
+                  {navItems.map((item) => (
                     <li
-                      key={item}
+                      key={item.name}
                       onClick={() => {
-                        setSelectedItem(item);
+                        navigate(item.path);
                         setShowMenu(false);
                       }}
                       className={`px-3 py-2 rounded-md cursor-pointer transition-all ${
-                        selectedItem === item
+                        selectedItem === item.name
                           ? "bg-[#373ca3] text-white"
                           : theme === "dark"
                           ? "hover:bg-gray-600"
                           : "hover:bg-gray-100"
                       }`}
                     >
-                      {item}
+                      {item.name}
                     </li>
                   ))}
                 </ul>
@@ -116,7 +124,7 @@ const Navbar = ({ isSidebarOpen, toggleSidebar }) => {
 
         {/* 🔹 Main Menu (Only for Large Screens) */}
         <ul
-          className={`hidden lg:flex items-center gap-5 px-3 py-1 rounded-md transition-all duration-300 
+          className={`hidden lg:flex items-center gap-5 px-3 py-1 rounded-md transition-all duration-300
           lg:ml-10 lg:mr-8  /* 👈 Left & Right push for large screen */
           ${
             theme === "dark"
@@ -124,21 +132,27 @@ const Navbar = ({ isSidebarOpen, toggleSidebar }) => {
               : "bg-white text-black"
           } ${isSidebarOpen ? "text-[12px]" : "text-[11px]"}`}
         >
-          <li className="bg-[#373ca3] text-white rounded-md px-3 py-1 whitespace-nowrap text-[11px] sm:text-[12px]">
-            Private GPT
-          </li>
-          <li className="whitespace-nowrap text-[11px] sm:text-[12px]">VOC</li>
-          <li className="whitespace-nowrap text-[11px] sm:text-[12px]">VOB</li>
-          <li className="whitespace-nowrap text-[11px] sm:text-[12px]">VOM</li>
-          <li className="hidden md:block whitespace-nowrap text-[11px] sm:text-[12px]">
-            Buyer Intelligence
-          </li>
-          <li className="hidden md:block whitespace-nowrap text-[11px] sm:text-[12px]">
-            User Management
-          </li>
-          <li className="hidden md:block whitespace-nowrap text-[11px] sm:text-[12px]">
-            Prompt Library
-          </li>
+          {navItems.map((item) => (
+            <li
+              key={item.name}
+              onClick={() => navigate(item.path)}
+              className={`cursor-pointer whitespace-nowrap text-[11px] sm:text-[12px] ${
+                location.pathname === item.path
+                  ? "bg-[#373ca3] text-white rounded-md px-3 py-1"
+                  : ""
+              } ${
+                [
+                  "Buyer Intelligence",
+                  "User Management",
+                  "Prompt Library",
+                ].includes(item.name)
+                  ? "hidden md:block"
+                  : ""
+              }`}
+            >
+              {item.name}
+            </li>
+          ))}
         </ul>
       </div>
 

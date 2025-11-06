@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Outlet } from "react-router";
 import Sidebar from "../sidebar/Sidebar";
 import Navbar from "../navbar/Navbar";
-import PrivateGpt from "../PrivateGpt/PrivateGpt";
 import { useTheme } from "../../contexts/ThemeContext";
 
 const Dashboard = () => {
@@ -9,6 +9,24 @@ const Dashboard = () => {
   const { theme } = useTheme();
 
   const toggleSidebar = () => setIsSidebarOpen((s) => !s);
+
+  useEffect(() => {
+    // ✅ Run once on mount (page refresh)
+    if (window.innerWidth < 1024) {
+      setIsSidebarOpen(false);
+    }
+
+    // ✅ Close sidebar automatically when resized to small screen
+    const handleResize = () => {
+      if (window.innerWidth < 1024) {
+        setIsSidebarOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div
@@ -32,7 +50,7 @@ const Dashboard = () => {
       {/* ===== Main Content ===== */}
       <div
         className={`flex flex-col flex-1 transition-all duration-500 ease-in-out 
-          ${isSidebarOpen ? "lg:ml-48" : "lg:ml-10"} 
+          ${isSidebarOpen ? "lg:ml-40" : "lg:ml-10"} 
         `}
       >
         {/* Navbar */}
@@ -40,9 +58,9 @@ const Dashboard = () => {
           <Navbar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
         </div>
 
-        {/* PrivateGpt */}
+        {/* Outlet for nested routes */}
         <main className="m-2 relative z-10">
-          <PrivateGpt isSidebarOpen={isSidebarOpen} />
+          <Outlet />
         </main>
       </div>
 
