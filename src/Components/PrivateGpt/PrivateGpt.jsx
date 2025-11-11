@@ -44,7 +44,7 @@ const PrivateGpt = ({ isSidebarOpen }) => {
           ${isSidebarOpen ? "max-w-4xl" : "max-w-5xl"}
           w-full gap-6 lg:gap-8`}
       >
-        {/* ===== HEADER ===== */}
+        
         <div className="flex flex-col items-center text-center gap-1">
           <div className="flex items-center gap-2 justify-center">
             <svg
@@ -98,7 +98,7 @@ const PrivateGpt = ({ isSidebarOpen }) => {
           </p>
         </div>
 
-        {/* ===== CARDS SECTION ===== */}
+
         <div
           className={`flex flex-wrap justify-center lg:justify-between transition-all duration-300 
             ${isSidebarOpen ? "gap-3 lg:gap-4" : "gap-5 lg:gap-4"}
@@ -136,8 +136,7 @@ const PrivateGpt = ({ isSidebarOpen }) => {
             </div>
           ))}
         </div>
-
-        {/* ===== INPUT SECTION ===== */}
+        
         <div
           className={`w-full max-w-3xl relative rounded-xl border transition-all duration-300 
             ${
@@ -146,7 +145,7 @@ const PrivateGpt = ({ isSidebarOpen }) => {
                 : "bg-[#eff1f2] border-gray-100"
             } p-4 sm:p-5`}
         >
-          <div className="relative flex items-center h-20 sm:h-[100px]">
+          <div className="relative flex items-center h-20 sm:h-[100px]">  
             <input
               type="text"
               placeholder="Hello..."
@@ -157,15 +156,14 @@ const PrivateGpt = ({ isSidebarOpen }) => {
                     : "bg-white border-gray-200 text-black placeholder-gray-500"
                 }`}
             />
-
-            {/* Left Buttons */}
+            
             <div className="absolute left-3 flex items-center gap-2">
               <button className="flex items-center gap-1 bg-transparent border border-gray-600 text-gray-500 rounded-full p-1.5">
                 <FaPaperclip />
               </button>
             </div>
 
-            {/* Right Buttons */}
+
             <div className="absolute right-3 flex items-center gap-2">
               <button className="p-2 bg-transparent border border-gray-600 text-gray-500 rounded-full">
                 <FaArrowUp />

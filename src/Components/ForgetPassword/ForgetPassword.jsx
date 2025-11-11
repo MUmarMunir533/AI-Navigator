@@ -7,7 +7,7 @@ const ForgetPassword = () => {
 
   return (
     <div className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-      {/* Fullscreen Gradient Background */}
+
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -18,9 +18,8 @@ const ForgetPassword = () => {
         }}
       ></div>
 
-      {/* Center Form */}
       <div className="relative z-10 p-8 rounded-2xl w-80 sm:w-96 max-w-sm backdrop-blur-md">
-        {/* Logo and Title */}
+
         <div className="flex items-center justify-center mb-5 space-x-2">
           <svg
             width="43"
@@ -54,17 +53,14 @@ const ForgetPassword = () => {
             </defs>
           </svg>
           <h2 className="text-xs font-black tracking-tight">AI Navigate</h2>
-        </div>
+        </div>z
 
-        {/* Heading */}
         <h2 className="text-2xl font-medium mb-1">Forgot Password</h2>
         <p className="text-gray-400 text-[14px] mb-5">
           Enter your e-mail address,and we'll give you reset instruction.
         </p>
 
-        {/* Form */}
         <form>
-          {/* Email */}
           <div className="mb-3">
             <label className="block mb-1 font-normal text-xs" htmlFor="email">
               Email Address
@@ -77,7 +73,6 @@ const ForgetPassword = () => {
             />
           </div>
 
-          {/* Button */}
           <Link to="/newPassword">
             <button
               type="submit"

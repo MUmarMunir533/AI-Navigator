@@ -32,7 +32,7 @@ const PromptLibrary = () => {
 
   return (
     <>
-      {/* ===== CONTENT WRAPPER ===== */}
+    
       <div
         className={`flex justify-center items-start h-screen overflow-x-hidden 
         transition-all duration-300 rounded-2xl 
@@ -40,15 +40,15 @@ const PromptLibrary = () => {
           theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-50 text-black"
         }`}
       >
-        {/* ===== INNER RESPONSIVE CONTAINER ===== */}
+        
         <div
           className={`flex flex-col px-3 sm:px-5 py-4 
           w-full max-w-[calc(100vw-2em)] md:max-w-[calc(100vw-4em)] xl:max-w-full 
           overflow-x-auto transition-all duration-300`}
         >
-          {/* ===== HEADER SECTION ===== */}
+          
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
-            {/* Search Bar */}
+      
             <div
               className={`flex items-center rounded-md w-full md:w-1/2 px-3 py-2 ${
                 theme === "dark"
@@ -65,8 +65,7 @@ const PromptLibrary = () => {
                 }`}
               />
             </div>
-
-            {/* Buttons */}
+            
             <div className="flex flex-wrap items-center gap-2">
               <button
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition ${
@@ -89,8 +88,7 @@ const PromptLibrary = () => {
               </button>
             </div>
           </div>
-
-          {/* ===== TABLE WRAPPER ===== */}
+          
           <div
             className={`relative border rounded-md w-full ${
               theme === "dark"

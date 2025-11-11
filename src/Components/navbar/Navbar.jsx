@@ -28,7 +28,6 @@ const Navbar = ({ isSidebarOpen, toggleSidebar }) => {
     navItems.find((item) => item.path === location.pathname)?.name ||
     "Private GPT";
 
-  // Click outside to close dropdowns
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (
@@ -52,9 +51,7 @@ const Navbar = ({ isSidebarOpen, toggleSidebar }) => {
         theme === "dark" ? "bg-gray-800 text-white" : "bg-[#eff1f2] text-black"
       }`}
     >
-      {/* LEFT SIDE */}
       <div className="flex items-center gap-2 sm:gap-4">
-        {/* 🔹 Sidebar Icon + Dropdown for small screens */}
         <div
           className={`flex md:flex lg:hidden items-center gap-2 rounded-lg shadow-lg pl-1.5 pt-2 pb-2 pr-1 transition-all duration-300 ${
             theme === "dark"
@@ -62,7 +59,6 @@ const Navbar = ({ isSidebarOpen, toggleSidebar }) => {
               : "bg-white text-black border-gray-300 hover:bg-gray-50"
           }`}
         >
-          {/* Sidebar Icon */}
           <button
             onClick={toggleSidebar}
             className={`p-1 rounded-md transition-all ${
@@ -73,8 +69,7 @@ const Navbar = ({ isSidebarOpen, toggleSidebar }) => {
           >
             <BsLayoutSidebar size={18} />
           </button>
-
-          {/* Dropdown */}
+          
           <div className="relative">
             <button
               onClick={() => setShowMenu(!showMenu)}
@@ -121,8 +116,7 @@ const Navbar = ({ isSidebarOpen, toggleSidebar }) => {
             )}
           </div>
         </div>
-
-        {/* 🔹 Main Menu (Only for Large Screens) */}
+        
         <ul
           className={`hidden lg:flex items-center gap-5 px-3 py-1 rounded-md transition-all duration-300
           lg:ml-10 lg:mr-8  /* 👈 Left & Right push for large screen */
@@ -155,8 +149,7 @@ const Navbar = ({ isSidebarOpen, toggleSidebar }) => {
           ))}
         </ul>
       </div>
-
-      {/* RIGHT SIDE */}
+      
       <div
         className={`flex items-center gap-2 sm:gap-3 md:gap-3 transition-all duration-300 ${
           isSidebarOpen ? "pr-0" : "pr-0"

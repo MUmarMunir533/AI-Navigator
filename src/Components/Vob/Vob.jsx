@@ -21,11 +21,47 @@ const Vob = () => {
       description: "-",
       like: 1,
     },
+    {
+      id: 2,
+      avatar: "https://randomuser.me/api/portraits/women/45.jpg",
+      guest: "Product Designer",
+      format: "Video",
+      category: "Interview",
+      description: "Design Process",
+      like: 4,
+    },
+    {
+      id: 3,
+      avatar: "https://randomuser.me/api/portraits/men/12.jpg",
+      guest: "Tech Lead",
+      format: "Audio",
+      category: "Talk Show",
+      description: "AI Discussion",
+      like: 3,
+    },
+    {
+      id: 4,
+      avatar: "https://randomuser.me/api/portraits/women/65.jpg",
+      guest: "Marketing Head",
+      format: "Multi-Media",
+      category: "Podcast",
+      description: "Growth Hacks",
+      like: 7,
+    },
+    {
+      id: 5,
+      avatar: "https://randomuser.me/api/portraits/men/22.jpg",
+      guest: "Data Analyst",
+      format: "Audio",
+      category: "Seminar",
+      description: "Big Data Talk",
+      like: 2,
+    },
   ];
 
   return (
     <>
-      {/* ===== CONTENT WRAPPER ===== */}
+    
       <div
         className={`flex justify-center items-start h-screen overflow-x-hidden 
         transition-all duration-300 rounded-2xl 
@@ -33,15 +69,15 @@ const Vob = () => {
           theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-50 text-black"
         }`}
       >
-        {/* ===== INNER RESPONSIVE CONTAINER ===== */}
+        
         <div
           className={`flex flex-col px-3 sm:px-5 py-4 
           w-full max-w-[calc(100vw-2em)] md:max-w-[calc(100vw-4em)] xl:max-w-full 
           overflow-x-auto transition-all duration-300`}
         >
-          {/* ===== HEADER SECTION ===== */}
+          
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
-            {/* Search Bar */}
+            
             <div
               className={`flex items-center rounded-md w-full md:w-1/2 px-3 py-2 ${
                 theme === "dark"
@@ -58,8 +94,7 @@ const Vob = () => {
                 }`}
               />
             </div>
-
-            {/* Buttons */}
+            
             <div className="flex flex-wrap items-center gap-2">
               <button
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition ${
@@ -82,8 +117,7 @@ const Vob = () => {
               </button>
             </div>
           </div>
-
-          {/* ===== TABLE WRAPPER ===== */}
+          
           <div
             className={`relative border rounded-md w-full ${
               theme === "dark"
@@ -104,8 +138,8 @@ const Vob = () => {
                       : "bg-white border-b border-gray-200 text-gray-600"
                   }`}
                 >
-                  <th className="px-3 py-2">Details</th>
-                  <th className="px-3 py-2">File Name</th>
+                  <th className="px-3 py-2">Avatar</th>
+                  <th className="px-3 py-2">Guest</th>
                   <th className="px-3 py-2">Format</th>
                   <th className="px-3 py-2">Category</th>
                   <th className="px-3 py-2">Description</th>

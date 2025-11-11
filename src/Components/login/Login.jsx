@@ -7,7 +7,6 @@ const Login = () => {
 
   return (
     <div className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-      {/* Fullscreen Gradient Background */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -18,9 +17,7 @@ const Login = () => {
         }}
       ></div>
 
-      {/* Center Form */}
       <div className="relative z-10 p-8 rounded-2xl w-80 sm:w-96 max-w-sm backdrop-blur-md">
-        {/* Logo and Title */}
         <div className="flex items-center justify-center mb-5 space-x-2">
           <svg
             width="43"
@@ -57,14 +54,11 @@ const Login = () => {
             AI Navigate
           </h2>
         </div>
-
-        {/* Heading */}
         <h2 className="text-2xl font-medium mb-1">Log in</h2>
         <p className="text-gray-400 text-xs mb-5">Log in to your account.</p>
 
-        {/* Form */}
         <form>
-          {/* Email */}
+
           <div className="mb-3">
             <label className="block mb-1 font-normal text-xs" htmlFor="email">
               Email Address
@@ -77,7 +71,6 @@ const Login = () => {
             />
           </div>
 
-          {/* Password */}
           <div className="mb-3 relative">
             <label htmlFor="password" className="block text-xs mb-1">
               Password
@@ -97,7 +90,6 @@ const Login = () => {
             </button>
           </div>
 
-          {/* Remember Me & Forgot */}
           <div className="flex items-center justify-end mb-4">
             <Link
               to="/forgetPassword"
@@ -107,7 +99,6 @@ const Login = () => {
             </Link>
           </div>
 
-          {/* Button */}
           <button
             type="submit"
             className="w-full text-xs font-medium bg-linear-to-l from-[#656bfd] via-[#F8F8F8] to-[#b26efb] py-3 rounded-full transition text-black duration-300 hover:scale-105"

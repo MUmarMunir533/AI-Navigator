@@ -2,11 +2,10 @@ import React, { useState, useRef, useEffect } from "react";
 import { FiMoon } from "react-icons/fi";
 
 const ThemeTogglePopup = () => {
-  const [theme, setTheme] = useState("light"); // default light
-  const [open, setOpen] = useState(false); // popup visibility
+  const [theme, setTheme] = useState("light");
+  const [open, setOpen] = useState(false);
   const popupRef = useRef();
 
-  // Load theme from localStorage on mount
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
@@ -29,12 +28,11 @@ const ThemeTogglePopup = () => {
 
   const toggleTheme = (mode) => {
     setTheme(mode);
-    localStorage.setItem("theme", mode); // save to localStorage
+    localStorage.setItem("theme", mode);
     applyTheme(mode);
-    setOpen(false); // close popup after selection
+    setOpen(false);
   };
 
-  // Close popup on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (popupRef.current && !popupRef.current.contains(e.target)) {
@@ -47,7 +45,6 @@ const ThemeTogglePopup = () => {
 
   return (
     <div className="fixed bottom-10 right-5 z-50" ref={popupRef}>
-      {/* Button */}
       <button
         onClick={() => setOpen(!open)}
         className="p-2 border border-gray-400 rounded-md bg-gray-700 text-white hover:bg-gray-600 transition-colors"
@@ -55,7 +52,6 @@ const ThemeTogglePopup = () => {
         <FiMoon size={16} />
       </button>
 
-      {/* Tooltip */}
       {open && (
         <div className="mb-2 w-28 bg-gray-900 text-white shadow-lg rounded-lg p-2 flex flex-col gap-2 absolute bottom-full right-0 animate-slide-up">
           <button
