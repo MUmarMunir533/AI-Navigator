@@ -70,16 +70,6 @@ const PromptLibrary = () => {
 
             <div className="flex flex-wrap items-center gap-2">
               <button
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition ${
-                  theme === "dark"
-                    ? "bg-gray-800 hover:bg-gray-700 text-white"
-                    : "bg-white shadow-md hover:bg-[#eff1f2] text-[#373ca3]"
-                }`}
-              >
-                <FiCalendar className="text-base" /> Search by Date
-              </button>
-
-              <button
                 onClick={() => setIsModalOpen(true)}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition ${
                   theme === "dark"

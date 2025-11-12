@@ -7,11 +7,15 @@ import {
   FiCalendar,
 } from "react-icons/fi";
 import { useTheme } from "../../contexts/ThemeContext";
-import AddRecordModal from "./AddRecordModel"; 
+import AddRecordModal from "./AddRecordModel";
+import DateRangeModal from "../Buttons/Model/DateRangeModal";
 
 const Voc = () => {
   const { theme } = useTheme();
   const [showModal, setShowModal] = useState(false);
+  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
 
   const data = [
     {
@@ -41,24 +45,6 @@ const Voc = () => {
       description: "AI Discussion",
       like: 3,
     },
-    {
-      id: 4,
-      avatar: "https://randomuser.me/api/portraits/women/65.jpg",
-      guest: "Marketing Head",
-      format: "Multi-Media",
-      category: "Podcast",
-      description: "Growth Hacks",
-      like: 7,
-    },
-    {
-      id: 5,
-      avatar: "https://randomuser.me/api/portraits/men/22.jpg",
-      guest: "Data Analyst",
-      format: "Audio",
-      category: "Seminar",
-      description: "Big Data Talk",
-      like: 2,
-    },
   ];
 
   return (
@@ -68,11 +54,7 @@ const Voc = () => {
           theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-50 text-black"
         }`}
       >
-        <div
-          className={`flex flex-col px-3 sm:px-5 py-4 
-          w-full max-w-[calc(100vw-2em)] md:max-w-[calc(100vw-4em)] xl:max-w-full 
-          overflow-x-auto transition-all duration-300`}
-        >
+        <div className="flex flex-col px-3 sm:px-5 py-4 w-full max-w-full overflow-x-auto">
           
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
             <div
@@ -91,8 +73,10 @@ const Voc = () => {
                 }`}
               />
             </div>
-            <div className="flex flex-wrap items-center gap-2">
+
+            <div className="flex flex-wrap items-center gap-2 relative">
               <button
+                onClick={() => setShowDatePicker(true)}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition ${
                   theme === "dark"
                     ? "bg-gray-800 hover:bg-gray-700 text-white"
@@ -103,8 +87,7 @@ const Voc = () => {
               </button>
 
               <button
-                onClick={() => setShowModal(true)} 
-                
+                onClick={() => setShowModal(true)}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition ${
                   theme === "dark"
                     ? "bg-[#373ca3] hover:bg-indigo-500 text-white"
@@ -188,6 +171,17 @@ const Voc = () => {
       
       {showModal && (
         <AddRecordModal theme={theme} onClose={() => setShowModal(false)} />
+      )}
+      
+      {showDatePicker && (
+        <DateRangeModal
+          theme={theme}
+          onClose={() => setShowDatePicker(false)}
+          startDate={startDate}
+          setStartDate={setStartDate}
+          endDate={endDate}
+          setEndDate={setEndDate}
+        />
       )}
     </>
   );

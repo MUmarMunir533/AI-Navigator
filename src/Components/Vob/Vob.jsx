@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import UploadModal from "./UploadModal";
+import DateRangeModal from "../Buttons/Model/DateRangeModal";
 import {
   FiSearch,
   FiThumbsUp,
@@ -11,7 +12,9 @@ import { useTheme } from "../../contexts/ThemeContext";
 
 const Vob = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [isDateModalOpen, setIsDateModalOpen] = useState(false); 
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
   const { theme } = useTheme();
 
   const data = [
@@ -76,6 +79,7 @@ const Vob = () => {
           w-full max-w-[calc(100vw-2em)] md:max-w-[calc(100vw-4em)] xl:max-w-full 
           overflow-x-auto transition-all duration-300`}
         >
+          {/* 🔍 Search + Actions */}
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
             <div
               className={`flex items-center rounded-md w-full md:w-1/2 px-3 py-2 ${
@@ -96,6 +100,7 @@ const Vob = () => {
 
             <div className="flex flex-wrap items-center gap-2">
               <button
+                onClick={() => setIsDateModalOpen(true)}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition ${
                   theme === "dark"
                     ? "bg-gray-800 hover:bg-gray-700 text-white"
@@ -104,6 +109,7 @@ const Vob = () => {
               >
                 <FiCalendar className="text-base" /> Search by Date
               </button>
+
 
               <button
                 onClick={() => setIsModalOpen(true)}
@@ -115,14 +121,25 @@ const Vob = () => {
               >
                 + &nbsp; Add Record
               </button>
-
+              
               <UploadModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
               />
+
+              {isDateModalOpen && (
+                <DateRangeModal
+                  theme={theme}
+                  onClose={() => setIsDateModalOpen(false)}
+                  startDate={startDate}
+                  setStartDate={setStartDate}
+                  endDate={endDate}
+                  setEndDate={setEndDate}
+                />
+              )}
             </div>
           </div>
-
+          
           <div
             className={`relative border rounded-md w-full ${
               theme === "dark"

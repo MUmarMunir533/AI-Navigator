@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import UploadModal from "../Vob/UploadModal";
+import DateRangeModal from "../Buttons/Model/DateRangeModal";
 import {
   FiSearch,
   FiThumbsUp,
@@ -11,6 +12,9 @@ import { useTheme } from "../../contexts/ThemeContext";
 
 const Vom = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDateModalOpen, setIsDateModalOpen] = useState(false);
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
   const { theme } = useTheme();
 
   const data = [
@@ -56,9 +60,11 @@ const Vom = () => {
                 }`}
               />
             </div>
-
+            
             <div className="flex flex-wrap items-center gap-2">
+
               <button
+                onClick={() => setIsDateModalOpen(true)}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition ${
                   theme === "dark"
                     ? "bg-gray-800 hover:bg-gray-700 text-white"
@@ -67,7 +73,7 @@ const Vom = () => {
               >
                 <FiCalendar className="text-base" /> Search by Date
               </button>
-
+              
               <button
                 onClick={() => setIsModalOpen(true)}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition ${
@@ -78,14 +84,25 @@ const Vom = () => {
               >
                 + &nbsp; Add Record
               </button>
-
+              
               <UploadModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
               />
+
+              {isDateModalOpen && (
+                <DateRangeModal
+                  theme={theme}
+                  onClose={() => setIsDateModalOpen(false)}
+                  startDate={startDate}
+                  setStartDate={setStartDate}
+                  endDate={endDate}
+                  setEndDate={setEndDate}
+                />
+              )}
             </div>
           </div>
-
+          
           <div
             className={`relative border rounded-md w-full ${
               theme === "dark"
