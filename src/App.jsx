@@ -11,6 +11,7 @@ import BuyerIntelligence from "./Components/BuyerIntelligence/BuyerIntelligence"
 import UserManagement from "./Components/UserManagement/UserManagement";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import PromptLibrary from "./Components/PromptLibrary/PromptLibrary";
+import BuyerIntelligenceAdmin from "./Components/BuyerIntelligenceAdmin/BuyerIntelligenceAdmin";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="vob" element={<Vob />} />
           <Route path="vom" element={<Vom />} />
           <Route path="buyer-intelligence" element={<BuyerIntelligence />} />
+          <Route path="buyer-intelligence-admin" element={<BuyerIntelligenceAdmin />} />
           <Route path="user-management" element={<UserManagement />} />
           <Route
             path="prompt-library"

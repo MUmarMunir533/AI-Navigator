@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import UploadModal from "./UploadModal";
 import {
   FiSearch,
   FiThumbsUp,
@@ -9,6 +10,8 @@ import {
 import { useTheme } from "../../contexts/ThemeContext";
 
 const Vob = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const { theme } = useTheme();
 
   const data = [
@@ -61,7 +64,6 @@ const Vob = () => {
 
   return (
     <>
-    
       <div
         className={`flex justify-center items-start h-screen overflow-x-hidden 
         transition-all duration-300 rounded-2xl 
@@ -69,15 +71,12 @@ const Vob = () => {
           theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-50 text-black"
         }`}
       >
-        
         <div
           className={`flex flex-col px-3 sm:px-5 py-4 
           w-full max-w-[calc(100vw-2em)] md:max-w-[calc(100vw-4em)] xl:max-w-full 
           overflow-x-auto transition-all duration-300`}
         >
-          
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
-            
             <div
               className={`flex items-center rounded-md w-full md:w-1/2 px-3 py-2 ${
                 theme === "dark"
@@ -88,13 +87,13 @@ const Vob = () => {
               <FiSearch className="text-gray-400 mr-2 text-sm shrink-0" />
               <input
                 type="text"
-                placeholder="Search episodes keywords..."
+                placeholder="Search Files..."
                 className={`w-full bg-transparent outline-none text-sm placeholder-gray-400 ${
                   theme === "dark" ? "text-gray-200" : "text-gray-700"
                 }`}
               />
             </div>
-            
+
             <div className="flex flex-wrap items-center gap-2">
               <button
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition ${
@@ -107,6 +106,7 @@ const Vob = () => {
               </button>
 
               <button
+                onClick={() => setIsModalOpen(true)}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition ${
                   theme === "dark"
                     ? "bg-[#373ca3] hover:bg-indigo-500 text-white"
@@ -115,9 +115,14 @@ const Vob = () => {
               >
                 + &nbsp; Add Record
               </button>
+
+              <UploadModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+              />
             </div>
           </div>
-          
+
           <div
             className={`relative border rounded-md w-full ${
               theme === "dark"

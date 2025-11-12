@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FiSearch,
   FiThumbsUp,
@@ -7,9 +7,11 @@ import {
   FiCalendar,
 } from "react-icons/fi";
 import { useTheme } from "../../contexts/ThemeContext";
+import AddRecordModal from "./AddRecordModel"; 
 
 const Voc = () => {
   const { theme } = useTheme();
+  const [showModal, setShowModal] = useState(false);
 
   const data = [
     {
@@ -62,9 +64,7 @@ const Voc = () => {
   return (
     <>
       <div
-        className={`flex justify-center items-start h-screen overflow-x-hidden 
-        transition-all duration-300 rounded-2xl 
-        ${
+        className={`flex justify-center items-start h-screen overflow-x-hidden transition-all duration-300 rounded-2xl ${
           theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-50 text-black"
         }`}
       >
@@ -73,6 +73,7 @@ const Voc = () => {
           w-full max-w-[calc(100vw-2em)] md:max-w-[calc(100vw-4em)] xl:max-w-full 
           overflow-x-auto transition-all duration-300`}
         >
+          
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
             <div
               className={`flex items-center rounded-md w-full md:w-1/2 px-3 py-2 ${
@@ -102,6 +103,8 @@ const Voc = () => {
               </button>
 
               <button
+                onClick={() => setShowModal(true)} 
+                
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition ${
                   theme === "dark"
                     ? "bg-[#373ca3] hover:bg-indigo-500 text-white"
@@ -118,13 +121,9 @@ const Voc = () => {
               theme === "dark"
                 ? "border-gray-700 bg-transparent"
                 : "border-gray-200 bg-white"
-            } overflow-x-auto scrollbar-thin ${
-              theme === "dark"
-                ? "scrollbar-thumb-gray-600 scrollbar-track-gray-800"
-                : "scrollbar-thumb-gray-400 scrollbar-track-gray-100"
-            }`}
+            } overflow-x-auto`}
           >
-            <table className="min-w-full w-full text-left text-xs sm:text-sm">
+            <table className="min-w-full text-left text-xs sm:text-sm">
               <thead>
                 <tr
                   className={`sticky top-0 ${
@@ -186,6 +185,10 @@ const Voc = () => {
           </div>
         </div>
       </div>
+      
+      {showModal && (
+        <AddRecordModal theme={theme} onClose={() => setShowModal(false)} />
+      )}
     </>
   );
 };

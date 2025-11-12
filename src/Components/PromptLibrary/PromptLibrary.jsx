@@ -1,38 +1,36 @@
-import React from "react";
-import {
-  FiSearch,
-  FiEdit2,
-  FiCalendar,
-} from "react-icons/fi";
+import React, { useState } from "react";
+import { FiSearch, FiEdit2, FiCalendar } from "react-icons/fi";
 import { useTheme } from "../../contexts/ThemeContext";
+import CreatePromptModal from "./CreatePromptModal";
 
 const PromptLibrary = () => {
   const { theme } = useTheme();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const data = [
     {
       id: 1,
       title: "First prompt",
       description: "Testing ",
-      company: "AI Navigator"
+      company: "AI Navigator",
     },
     {
       id: 2,
       title: "testing",
       description: "Descrtption",
-      company: "AI Navigator"
+      company: "AI Navigator",
     },
     {
       id: 3,
       title: "Rewriting Messages",
-      description: "	This prompt rewrites any message — such as a chat, to make it short, clear, and easy to read.... ",
-      company: "AI Navigator"
+      description:
+        "This prompt rewrites any message — such as a chat, to make it short, clear, and easy to read.... ",
+      company: "AI Navigator",
     },
   ];
 
   return (
     <>
-    
       <div
         className={`flex justify-center items-start h-screen overflow-x-hidden 
         transition-all duration-300 rounded-2xl 
@@ -40,15 +38,19 @@ const PromptLibrary = () => {
           theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-50 text-black"
         }`}
       >
-        
         <div
           className={`flex flex-col px-3 sm:px-5 py-4 
           w-full max-w-[calc(100vw-2em)] md:max-w-[calc(100vw-4em)] xl:max-w-full 
           overflow-x-auto transition-all duration-300`}
         >
-          
+          <div className="p-3">
+            <h1 className="text-2xl font-medium">Prompt Library</h1>
+            <p className="text-[16px] pt-2 text-gray-400">
+              Browse and manage saved prompts.
+            </p>
+          </div>
+
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
-      
             <div
               className={`flex items-center rounded-md w-full md:w-1/2 px-3 py-2 ${
                 theme === "dark"
@@ -59,13 +61,13 @@ const PromptLibrary = () => {
               <FiSearch className="text-gray-400 mr-2 text-sm shrink-0" />
               <input
                 type="text"
-                placeholder="Search episodes keywords..."
+                placeholder="Search Prompts..."
                 className={`w-full bg-transparent outline-none text-sm placeholder-gray-400 ${
                   theme === "dark" ? "text-gray-200" : "text-gray-700"
                 }`}
               />
             </div>
-            
+
             <div className="flex flex-wrap items-center gap-2">
               <button
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition ${
@@ -78,17 +80,18 @@ const PromptLibrary = () => {
               </button>
 
               <button
+                onClick={() => setIsModalOpen(true)}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition ${
                   theme === "dark"
                     ? "bg-[#373ca3] hover:bg-indigo-500 text-white"
                     : "bg-[#373ca3] hover:bg-indigo-700 text-white"
                 }`}
               >
-                + &nbsp; Add Record
+                + &nbsp; Add Prompt
               </button>
             </div>
           </div>
-          
+
           <div
             className={`relative border rounded-md w-full ${
               theme === "dark"
@@ -111,7 +114,7 @@ const PromptLibrary = () => {
                 >
                   <th className="px-3 py-2">Title</th>
                   <th className="px-3 py-2">Description</th>
-                  <th className="px-3 py-2">company</th>
+                  <th className="px-3 py-2">Company</th>
                   <th className="px-3 py-2 flex justify-end">Actions</th>
                 </tr>
               </thead>
@@ -129,9 +132,7 @@ const PromptLibrary = () => {
                       {item.title}
                     </td>
                     <td className="px-3 py-2">{item.description}</td>
-                    <td className="px-3 py-2">
-                     {item.company}
-                    </td>
+                    <td className="px-3 py-2">{item.company}</td>
                     <td className="px-3 py-2 flex justify-end">
                       <FiEdit2 className="text-sm" />
                     </td>
@@ -142,6 +143,11 @@ const PromptLibrary = () => {
           </div>
         </div>
       </div>
+      
+      <CreatePromptModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </>
   );
 };
